@@ -593,6 +593,7 @@ header .go-back i {
     font-weight: 400;
 }
 
+/*
 @-webkit-keyframes rainbow {
 
     0%,
@@ -638,7 +639,6 @@ header .go-back i {
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }
 }
-
 @keyframes rainbow {
 
     0%,
@@ -684,7 +684,7 @@ header .go-back i {
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }
 }
-
+*/
 .index-card {
     margin-top: -10px;
     padding-top: 20px;
