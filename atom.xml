@@ -6,7 +6,7 @@
   <link href="https://liuzhangjie1713.github.io/atom.xml" rel="self"/>
   
   <link href="https://liuzhangjie1713.github.io/"/>
-  <updated>2023-03-17T13:23:16.000Z</updated>
+  <updated>2022-02-24T15:44:00.378Z</updated>
   <id>https://liuzhangjie1713.github.io/</id>
   
   <author>
@@ -15,106 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JVM</title>
-    <link href="https://liuzhangjie1713.github.io/2023/03/17/jvm/"/>
-    <id>https://liuzhangjie1713.github.io/2023/03/17/jvm/</id>
-    <published>2023-03-17T13:23:16.000Z</published>
-    <updated>2023-03-17T13:23:16.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;JVM整体架构&quot;&gt;&lt;a href=&quot;#JVM整体架构&quot; class=&quot;headerlink&quot; title=&quot;JVM整体架构&quot;&gt;&lt;/a&gt;JVM整体架构&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="Java" scheme="https://liuzhangjie1713.github.io/categories/Java/"/>
-    
-    
-    <category term="JVM" scheme="https://liuzhangjie1713.github.io/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL</title>
-    <link href="https://liuzhangjie1713.github.io/2023/03/17/mysql/"/>
-    <id>https://liuzhangjie1713.github.io/2023/03/17/mysql/</id>
-    <published>2023-03-17T13:13:11.000Z</published>
-    <updated>2023-03-17T13:13:11.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;MySQL-基础架构&quot;&gt;&lt;a href=&quot;#MySQL-基础架构&quot; class=&quot;headerlink&quot; title=&quot;MySQL 基础架构&quot;&gt;&lt;/a&gt;MySQL 基础架构&lt;/h2&gt;&lt;p&gt;下面就是 MySQL 执行一条 SQL 查询语句的流程，也从图中可以看到</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://liuzhangjie1713.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="MySQL" scheme="https://liuzhangjie1713.github.io/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis</title>
-    <link href="https://liuzhangjie1713.github.io/2023/03/17/redis/"/>
-    <id>https://liuzhangjie1713.github.io/2023/03/17/redis/</id>
-    <published>2023-03-17T13:07:51.000Z</published>
-    <updated>2023-03-17T13:07:51.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Redis基础&quot;&gt;&lt;a href=&quot;#Redis基础&quot; class=&quot;headerlink&quot; title=&quot;Redis基础&quot;&gt;&lt;/a&gt;Redis基础&lt;/h2&gt;&lt;p&gt;redis是一个基于C语言开发的分布式高性能 KV</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://liuzhangjie1713.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="redis" scheme="https://liuzhangjie1713.github.io/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络</title>
-    <link href="https://liuzhangjie1713.github.io/2023/03/17/ji-suan-ji-wang-luo/"/>
-    <id>https://liuzhangjie1713.github.io/2023/03/17/ji-suan-ji-wang-luo/</id>
-    <published>2023-03-17T09:22:28.000Z</published>
-    <updated>2023-03-17T09:22:28.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;分层模型&quot;&gt;&lt;a href=&quot;#分层模型&quot; class=&quot;headerlink&quot; title=&quot;分层模型&quot;&gt;&lt;/a&gt;分层模型&lt;/h2&gt;&lt;h3 id=&quot;OSI-七层模型&quot;&gt;&lt;a href=&quot;#OSI-七层模型&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机基础" scheme="https://liuzhangjie1713.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="计算机网络" scheme="https://liuzhangjie1713.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
