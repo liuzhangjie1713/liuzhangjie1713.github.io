@@ -648,11 +648,11 @@ ttl key # 查看数据还有多久过期
 </code></pre>
 <p>每当我们对一个 key 设置了过期时间时，Redis 会把该 key 带上过期时间存储到一个<strong>过期字典</strong>（expires dict）中，也就是说「过期字典」保存了数据库中所有 key 的过期时间。</p>
 <p>过期字典存储在 redisDb 结构中，如下：</p>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> redisDb <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> redisDb <span class="token punctuation">{</span>
     dict <span class="token operator">*</span>dict<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 数据库键空间，存放着所有的键值对 */</span>
     dict <span class="token operator">*</span>expires<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 键的过期时间 */</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> redisDb<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> redisDb<span class="token punctuation">;</span>
 </code></pre>
 <p>过期字典数据结构结构如下：</p>
 <ul>
