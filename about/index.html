@@ -288,7 +288,9 @@
 
 
 <script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
 
@@ -534,7 +536,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"数据库","value":2},{"name":"分布式","value":1},{"name":"Java","value":1},{"name":"计算机基础","value":1}],
+                data: [{"name":"分布式","value":1},{"name":"Java","value":1},{"name":"数据库","value":2},{"name":"计算机基础","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -558,7 +560,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["MIT6.824","Redis","JVM","MySQL","Linux","计算机网络"]
+                data: ["MIT6.824","JVM","Redis","MySQL","Linux","计算机网络"]
             }
         ],
         yAxis: [

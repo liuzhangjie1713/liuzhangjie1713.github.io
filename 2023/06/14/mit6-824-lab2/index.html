@@ -434,8 +434,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h1><p>MIT6.824 Lab2的内容是要求我们实现一个除了集群成员变化功能的Raft算法，总共分为四个部分，Lab2A：领导人选举，Lab2B：日志，Lab3：持久化，Lab4：日志压缩。在这里，记录一下自己对Raft算法的理解，实验的设计思路，以及遇到的问题。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>在做实验之前，强烈建议先认真阅读以下几篇文章。</p>
+                <h2 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h2><p>MIT6.824 Lab2的内容是要求我们实现一个除了集群成员变化功能的Raft算法，总共分为四个部分，Lab2A：领导人选举，Lab2B：日志，Lab3：持久化，Lab4：日志压缩。在这里，记录一下自己对Raft算法的理解，实验的设计思路，以及遇到的问题。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>在做实验之前，强烈建议先认真阅读以下几篇文章。</p>
 <ol>
 <li><a href="https://link.zhihu.com/?target=http://thesecretlivesofdata.com/raft/">可视化raft</a>和<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/raft-extended.pdf">raft论文</a>：这能够让我们对Raft有一个宏观的认识，图2更是做Lab的终极指南，它所提到的每个要求我们都必须去实现。</li>
 <li><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-raft.html">MIT 6.824 Lab2实验指导</a>：这能告诉我们在Lab中需要完成的具体内容。</li>
@@ -449,7 +449,7 @@
 <li><a target="_blank" rel="noopener" href="https://gukaifeng.cn/posts/mit6.824-students-guide-to-raft-fan-yi/">MIT6.824 Students’ Guide to Raft 翻译</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/510801912">Raft Locking Advice</a></li>
 </ol>
-<h1 id="并发和锁"><a href="#并发和锁" class="headerlink" title="并发和锁"></a>并发和锁</h1><p>在并发和锁方面有如下几条建议：</p>
+<h2 id="并发和锁"><a href="#并发和锁" class="headerlink" title="并发和锁"></a>并发和锁</h2><p>在并发和锁方面有如下几条建议：</p>
 <ol>
 <li><p>不要在读写通道上持有锁</p>
 <p>当Raft库获取锁往apply channel中写入数据时，如果上层应用调用Start方法就可能发生死锁，因为在Start方法中上层应用试图获取Raft库的锁而发生阻塞，Raft库也会因为上层应用无法读channel而阻塞在写channel上。</p>
@@ -461,9 +461,9 @@
 <p>在lab中最好先用粗粒度的锁，想优化的时候在慢慢细化。</p>
 </li>
 </ol>
-<h1 id="实验设计"><a href="#实验设计" class="headerlink" title="实验设计"></a>实验设计</h1><p>下面我会简单介绍我实现的Raft，在此之前，先将图2贴上，以表敬意。</p>
+<h2 id="实验设计"><a href="#实验设计" class="headerlink" title="实验设计"></a>实验设计</h2><p>下面我会简单介绍我实现的Raft，在此之前，先将图2贴上，以表敬意。</p>
 <p><img src="http://blog-liuzhangjie.oss-cn-chengdu.aliyuncs.com/img/2023/20230614002744.png"> </p>
-<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p>我的Raft结构体基本都是图2中涉及到的字段以及Lab中要求的字段，尽量保持简洁。</p>
+<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>我的Raft结构体基本都是图2中涉及到的字段以及Lab中要求的字段，尽量保持简洁。</p>
 <pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// A Go object implementing a single Raft peer.</span>
 <span class="token keyword">type</span> Raft <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     mu        sync<span class="token punctuation">.</span>Mutex          <span class="token comment" spellcheck="true">// Lock to protect shared access to this peer's state</span>
@@ -544,7 +544,7 @@
     <span class="token keyword">return</span> rf
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="领导人选举"><a href="#领导人选举" class="headerlink" title="领导人选举"></a>领导人选举</h2><p>这一部分要求我们实现Leader选举和心跳检测，论文中的图4很好的展示了在选举过程服务器状态变化的逻辑关系。</p>
+<h3 id="领导人选举"><a href="#领导人选举" class="headerlink" title="领导人选举"></a>领导人选举</h3><p>这一部分要求我们实现Leader选举和心跳检测，论文中的图4很好的展示了在选举过程服务器状态变化的逻辑关系。</p>
 <p><img src="http://blog-liuzhangjie.oss-cn-chengdu.aliyuncs.com/img/2023/20230608162935.png"> </p>
 <h4 id="tiker"><a href="#tiker" class="headerlink" title="tiker"></a>tiker</h4><p>ticker 协程会定期收到两个 timer 的到期事件</p>
 <ul>
@@ -724,7 +724,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="日志复制"><a href="#日志复制" class="headerlink" title="日志复制"></a>日志复制</h2><p>日志复制是Raft算法的核心，2b, 2c, 2d中都有很多针对这部分代码的 corner case ，会有很多容易忽视的细节需要通过不断地debug去完善。</p>
+<h3 id="日志复制"><a href="#日志复制" class="headerlink" title="日志复制"></a>日志复制</h3><p>日志复制是Raft算法的核心，2b, 2c, 2d中都有很多针对这部分代码的 corner case ，会有很多容易忽视的细节需要通过不断地debug去完善。</p>
 <h4 id="becomeLeader"><a href="#becomeLeader" class="headerlink" title="becomeLeader"></a>becomeLeader</h4><p>在节点成为Leader后，开始发送日志前，需要对 nextIndex 和 matchIndex进行初始化</p>
 <ul>
 <li>nextIndex ：是对领导者与给定追随者共享什么前缀的猜测，实际要发送每个 Follower 的下一个日志条目。它通常非常乐观（先假定我们共享一切，例如，当一个领导者刚刚被选举出来时，nextIndex 被设置为日志末尾的索引），仅在负面回应时才向前移动。</li>
@@ -1063,7 +1063,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><p>持久化是为了让重新启动的服务器能够从中断的位置恢复服务。</p>
+<h3 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h3><p>持久化是为了让重新启动的服务器能够从中断的位置恢复服务。</p>
 <p>持久化的部分其实代码写起来非常简单，困难的是2C的测试中相比2B增加了许多 corner case（比如服务器故障，RPC丢失和延迟），你需要不断debug去完善你在2B中写的代码，但2C中打印的日志太长了导致读日志的时候非常难受，导致最后我花在2C上的时间都和2B一样长了。</p>
 <p>这部分需要注意的是调用persist和readPersist的地方</p>
 <ul>
@@ -1118,7 +1118,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="日志压缩"><a href="#日志压缩" class="headerlink" title="日志压缩"></a>日志压缩</h2><p>Raft使用快照的方式对日志进行压缩：将整个系统的状态都以快照的形式写入到稳定的持久化存储中，然后快照之前的日志全部丢弃。这样可以避免日志的无限增长，占用太多的内存空间，也可以避免节点重启后需要从头开始执行大量的l日志，节点仅需读取快照，并重新执行快照后的日志条目即可。</p>
+<h3 id="日志压缩"><a href="#日志压缩" class="headerlink" title="日志压缩"></a>日志压缩</h3><p>Raft使用快照的方式对日志进行压缩：将整个系统的状态都以快照的形式写入到稳定的持久化存储中，然后快照之前的日志全部丢弃。这样可以避免日志的无限增长，占用太多的内存空间，也可以避免节点重启后需要从头开始执行大量的l日志，节点仅需读取快照，并重新执行快照后的日志条目即可。</p>
 <p>日志压缩的代码实现主要参考论文的section7，和 Raft 交互图</p>
 <p><img src="http://blog-liuzhangjie.oss-cn-chengdu.aliyuncs.com/img/2023/20230613145058.png"> </p>
 <h4 id="LastIncludeIndex"><a href="#LastIncludeIndex" class="headerlink" title="LastIncludeIndex"></a>LastIncludeIndex</h4><p>在2D中需要对索引系统进行改造，快照功能引入后，由于涉及日志条目的截断操作，截断之前的日志变得不可访问了，故需要设<code>lastIncludeIndex</code>这变量来记录快照中最后一个日志的索引，然后在代码中所有需要访问<code>rf.log</code>中的日志时，就必须改为用日志的index - lastIncludeIndex才能得到日志在log数组中的实际下标。</p>
@@ -1263,7 +1263,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>下图是教授在课程上提到的调试经验，可以参考。但其实在整个Lab2中，最终极也是最简单的办法就是在报错后重新读一遍论文和guidence，看看自己哪些细节没考虑到。</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>下图是教授在课程上提到的调试经验，可以参考。但其实在整个Lab2中，最终极也是最简单的办法就是在报错后重新读一遍论文和guidence，看看自己哪些细节没考虑到。</p>
 <p><img src="http://blog-liuzhangjie.oss-cn-chengdu.aliyuncs.com/img/2023/20230610210030.png"> </p>
 <p>具体的debug工具可以使用<code>util.go</code>中的<code>Dprintf</code>函数：</p>
 <ul>
