@@ -6,7 +6,7 @@
   <link href="https://liuzhangjie1713.github.io/atom.xml" rel="self"/>
   
   <link href="https://liuzhangjie1713.github.io/"/>
-  <updated>2023-06-13T16:57:09.797Z</updated>
+  <updated>2023-06-19T15:05:22.000Z</updated>
   <id>https://liuzhangjie1713.github.io/</id>
   
   <author>
@@ -17,11 +17,87 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>tanx</title>
+    <link href="https://liuzhangjie1713.github.io/2023/06/19/tan-xin/"/>
+    <id>https://liuzhangjie1713.github.io/2023/06/19/tan-xin/</id>
+    <published>2023-06-19T15:05:22.000Z</published>
+    <updated>2023-06-19T15:05:22.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;区间问题&quot;&gt;&lt;a href=&quot;#区间问题&quot; class=&quot;headerlink&quot; title=&quot;区间问题&quot;&gt;&lt;/a&gt;区间问题&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://liuzhangjie1713.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="acwing" scheme="https://liuzhangjie1713.github.io/tags/acwing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动态规划</title>
+    <link href="https://liuzhangjie1713.github.io/2023/06/19/dong-tai-gui-hua/"/>
+    <id>https://liuzhangjie1713.github.io/2023/06/19/dong-tai-gui-hua/</id>
+    <published>2023-06-19T15:04:39.000Z</published>
+    <updated>2023-06-19T15:04:39.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背包问题&quot;&gt;&lt;a href=&quot;#背包问题&quot; class=&quot;headerlink&quot; title=&quot;背包问题&quot;&gt;&lt;/a&gt;背包问题&lt;/h2&gt;&lt;h3 id=&quot;01背包问题&quot;&gt;&lt;a href=&quot;#01背包问题&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://liuzhangjie1713.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="acwing" scheme="https://liuzhangjie1713.github.io/tags/acwing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搜索与图论</title>
+    <link href="https://liuzhangjie1713.github.io/2023/06/19/sou-suo-yu-tu-lun/"/>
+    <id>https://liuzhangjie1713.github.io/2023/06/19/sou-suo-yu-tu-lun/</id>
+    <published>2023-06-19T15:03:52.000Z</published>
+    <updated>2023-06-19T15:03:52.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://blog-liuzhangjie.oss-cn-chengdu.aliyuncs.com/img/2023/20230330113534.png&quot; alt=&quot;image-20230330113532200&quot;&gt; &lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://liuzhangjie1713.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="acwing" scheme="https://liuzhangjie1713.github.io/tags/acwing/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MIT6.824-Lab2</title>
     <link href="https://liuzhangjie1713.github.io/2023/06/14/mit6-824-lab2/"/>
     <id>https://liuzhangjie1713.github.io/2023/06/14/mit6-824-lab2/</id>
     <published>2023-06-13T16:42:00.000Z</published>
-    <updated>2023-06-13T16:57:09.797Z</updated>
+    <updated>2023-06-13T16:42:00.000Z</updated>
     
     
       
@@ -97,7 +173,7 @@
     <link href="https://liuzhangjie1713.github.io/2023/03/17/mysql/"/>
     <id>https://liuzhangjie1713.github.io/2023/03/17/mysql/</id>
     <published>2023-03-17T13:13:11.000Z</published>
-    <updated>2023-03-17T13:13:11.000Z</updated>
+    <updated>2023-03-18T10:31:51.000Z</updated>
     
     
       
@@ -147,7 +223,7 @@
     <link href="https://liuzhangjie1713.github.io/2023/03/17/ji-suan-ji-wang-luo/"/>
     <id>https://liuzhangjie1713.github.io/2023/03/17/ji-suan-ji-wang-luo/</id>
     <published>2023-03-17T09:22:28.000Z</published>
-    <updated>2023-03-17T09:22:28.000Z</updated>
+    <updated>2023-03-18T10:31:56.000Z</updated>
     
     
       
